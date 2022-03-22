@@ -1,0 +1,36 @@
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).exe.config
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).exe
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).pdb
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\bin\Debug\OpenTK.dll
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\bin\Debug\OpenTK.pdb
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\bin\Debug\OpenTK.xml
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.AssemblyReference.cache
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.SuggestedBindingRedirects.cache
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.CoreCompileInputs.cache
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.CopyComplete
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).exe
+C:\JEUXVIDEO\OpenTK - Mouvements\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).pdb
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).exe.config
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).exe
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).pdb
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\bin\Debug\OpenTK.dll
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\bin\Debug\OpenTK.pdb
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\bin\Debug\OpenTK.xml
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.AssemblyReference.cache
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.SuggestedBindingRedirects.cache
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.CoreCompileInputs.cache
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.CopyComplete
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).exe
+C:\JEUXVIDEO\OpenTK - Mecaniques de jeu\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).pdb
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).exe.config
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).exe
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).pdb
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\bin\Debug\OpenTK.dll
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\bin\Debug\OpenTK.pdb
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\bin\Debug\OpenTK.xml
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.AssemblyReference.cache
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.SuggestedBindingRedirects.cache
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.CoreCompileInputs.cache
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\obj\Debug\Jeu-Mouvements.csproj.CopyComplete
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).exe
+C:\GIT\TP2_mathisGauthier\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).pdb

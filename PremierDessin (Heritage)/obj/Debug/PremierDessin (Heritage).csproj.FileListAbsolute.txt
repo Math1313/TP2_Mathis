@@ -1,0 +1,12 @@
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).exe.config
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).exe
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\bin\Debug\PremierDessin (Heritage).pdb
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\bin\Debug\OpenTK.dll
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\bin\Debug\OpenTK.pdb
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\bin\Debug\OpenTK.xml
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).csproj.AssemblyReference.cache
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).csproj.SuggestedBindingRedirects.cache
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).csproj.CoreCompileInputs.cache
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).csproj.CopyComplete
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).exe
+C:\JEUXVIDEO\PremierDessin (Heritage)\PremierDessin (Heritage)\obj\Debug\PremierDessin (Heritage).pdb
