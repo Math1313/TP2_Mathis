@@ -42,6 +42,7 @@ namespace PremierDessin__Heritage_
         #region MethodesClasseParent
         override public void update()
         {
+            //Les caisses restent coincé entre elle, changer le déplacement dans la classe Carre2D si la valDommage est = 10.
             if (deplacementVertical + incrementVertical >= 105.0f - listePoints[3].Y
                 || deplacementVertical + incrementVertical <= -150.0f - listePoints[0].Y)
             {
