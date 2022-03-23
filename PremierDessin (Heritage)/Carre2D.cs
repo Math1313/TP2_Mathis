@@ -82,11 +82,17 @@ namespace PremierDessin__Heritage_
             {
                 incrementVertical *= -1.0f;
                 deplacementVertical += incrementVertical;
+                if (valDommage == 10)
+                {
+                }
             }
             if (coteCollision.ToString() == "OUEST" || coteCollision.ToString() == "EST")
             {
                 incrementHorizontal *= -1.0f;
                 deplacementHorizontal += incrementHorizontal;
+                if (valDommage == 10)
+                {
+                }
             }
         }
         public void dessiner()

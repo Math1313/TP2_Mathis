@@ -124,7 +124,10 @@ namespace BaseOpenTk
         #region GestionAffichage
         private void update(object sender, EventArgs arg)
         {
-            detectionCollisions();
+            if(!isGameOver)
+            {
+                detectionCollisions();
+            }
 
             KeyboardState etatClavier = Keyboard.GetState();
             if (valPointsDeVie <= 0)
