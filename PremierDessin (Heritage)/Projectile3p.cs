@@ -64,7 +64,12 @@ namespace PremierDessin__Heritage_
         }
         public override Dictionary<CoteObjets, Vector2[]> getDroitesCotes()
         {
-            return new Dictionary<CoteObjets, Vector2[]>();
+            Dictionary<CoteObjets, Vector2[]> listeDroites = new Dictionary<CoteObjets, Vector2[]>();
+            listeDroites[CoteObjets.SUD] = new Vector2[] { listePoints[0], listePoints[1] };
+            listeDroites[CoteObjets.NORD_EST] = new Vector2[] { listePoints[1], listePoints[2] };
+            listeDroites[CoteObjets.NORD_OUEST] = new Vector2[] { listePoints[2], listePoints[0] };
+
+            return listeDroites;
         }
         #endregion //MéthodesClasseParents
 

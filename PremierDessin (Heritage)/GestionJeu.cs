@@ -395,24 +395,18 @@ namespace BaseOpenTk
             }
 
 
-            /*-----------------------------------------------------------------------------*/
-            /*-----------------------------------------------------------------------------*/
-            /*-----------------------------------------------------------------------------*/
-            /*-----------------------------------------------------------------------------*/
-            /*-----------------------------------------------------------------------------*/
             if (minisDoritos != null && caissesDeBois != null && minisDoritos.Count > 0)
             {
                 List<Projectile3p> listeMinisDoritos = new List<Projectile3p>(minisDoritos);
                 List<Carre2D> listeCaissesDeBois = new List<Carre2D>(caissesDeBois);
 
                 IDictionary<CoteObjets, Vector2[]> listeDroitesProjectiles;
-                CoteObjets coteCollection = CoteObjets.NULL;
+                CoteObjets coteCollision = CoteObjets.NULL;
                 foreach(Carre2D caisse in listeCaissesDeBois)
                 {
                     listeDroitesCarre = caisse.getDroitesCotes();
                     foreach(Projectile3p miniDoritos in listeMinisDoritos)
                     {
-                        //LISTE DROITES PROJECTILES NE PREND AUCUNE DROITE
                         listeDroitesProjectiles = miniDoritos.getDroitesCotes();
                         bool siCollisionProjectileCaisse = false;
                         foreach (Vector2[] droiteProjectile in listeDroitesProjectiles.Values)
@@ -420,10 +414,11 @@ namespace BaseOpenTk
 
                             foreach (KeyValuePair<CoteObjets, Vector2[]>droiteCarre in listeDroitesCarre)
                             {
+                                
                                 if (intersection(droiteProjectile, droiteCarre.Value))
                                 {
                                     siCollisionProjectileCaisse = true;
-                                    coteCollection = droiteCarre.Key;
+                                    coteCollision = droiteCarre.Key;
                                     Console.WriteLine("Collision");
                                 }
                             }

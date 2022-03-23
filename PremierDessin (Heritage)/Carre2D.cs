@@ -25,6 +25,10 @@ namespace PremierDessin__Heritage_
         }
         public Carre2D(int dommage, Vector2 a, Vector2 b, Vector2 c, Vector2 d) : base("./images/CaisseBoisBMP.bmp", a, b, c, d)
         {
+            deplacementVertical = 0.0f;
+            deplacementHorizontal = 0.0f;
+            incrementVertical = 1.5f;
+            incrementHorizontal = 2.0f;
             valDommage = dommage;
         }
         #endregion
@@ -73,6 +77,7 @@ namespace PremierDessin__Heritage_
 
         public void inverserDirection(CoteObjets coteCollision)
         {
+
             if (coteCollision == CoteObjets.SUD || coteCollision.ToString() == "NORD")
             {
                 incrementVertical *= -1.0f;
@@ -81,7 +86,7 @@ namespace PremierDessin__Heritage_
             if (coteCollision.ToString() == "OUEST" || coteCollision.ToString() == "EST")
             {
                 incrementHorizontal *= -1.0f;
-                deplacementHorizontal += 2.0f * incrementHorizontal;
+                deplacementHorizontal += incrementHorizontal;
             }
         }
         public void dessiner()
@@ -109,8 +114,6 @@ namespace PremierDessin__Heritage_
         public Vector2[][] getPointsPourPetitesCaisses()
         {
             Vector2[][] newPoints = new Vector2[4][];
-            //TODO: Faire une fonction getPointsReels() qui return un Vector2[] - Ce sont les points du carré initiale.
-            //Reste du code dans annexe
             Vector2[] pointsReels = getPointsReels();
 
             float demieLongueur = (pointsReels[1].X - pointsReels[0].X) / 2;
@@ -142,6 +145,14 @@ namespace PremierDessin__Heritage_
 
             return newPoints;
 
+        }
+
+        public void getDeplacement()
+        {
+            Console.WriteLine("============================================");
+            Console.WriteLine("Deplacement Horizontale: " + deplacementHorizontal);
+            Console.WriteLine("Deplacement Verticale: " + deplacementVertical);
+            Console.WriteLine("============================================");
         }
         #endregion
     }
