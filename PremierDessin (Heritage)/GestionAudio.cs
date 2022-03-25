@@ -46,6 +46,22 @@ namespace PremierDessin__Heritage_
         int bufferDestructionCaisse;
         int sourceDestructionCaisse;
         FichierWAV fichierDestructionCaisse;
+
+        //WINNER
+        int bufferWinner;
+        int sourceWinner;
+        FichierWAV fichierWinner;
+
+        //DORITOS
+        int bufferDoritos;
+        int sourceDoritos;
+        FichierWAV fichierDoritos;
+
+        //APPLAUSE
+        int bufferApplause;
+        int sourceApplause;
+        FichierWAV fichierApplause;
+
         #endregion // Attributs
 
         #region ConstructeurInitialisateurFinalizer
@@ -60,6 +76,8 @@ namespace PremierDessin__Heritage_
             fichierSplash = new FichierWAV("./audio/Splash.wav");
             fichierPleures = new FichierWAV("./audio/Pleures.wav");
             fichierDestructionCaisse = new FichierWAV("./audio/DestructionCaisse.wav");
+            //fichierDoritos = new FichierWAV("./audio/Doritos.wav");
+            //fichierApplause = new FichierWAV("./audio/Applause.wav");
             init();
         }
 
@@ -120,6 +138,23 @@ namespace PremierDessin__Heritage_
             AL.Source(sourceDestructionCaisse, ALSourcei.Buffer, bufferDestructionCaisse);
             AL.Source(sourceDestructionCaisse, ALSourceb.Looping, false);
 
+            ////DORITOS
+            //bufferDoritos = AL.GenBuffer();
+            //sourceDoritos = AL.GenSource();
+            //AL.BufferData(bufferDoritos, fichierDoritos.getFormatSonAL(), fichierDoritos.getDonneesSonores(),
+            //    fichierDoritos.getQteDonneesSonores(), fichierDoritos.getFrequence());
+            //AL.Source(sourceDoritos, ALSourcei.Buffer, bufferDoritos);
+            //AL.Source(sourceDoritos, ALSourceb.Looping, false);
+
+            ////APPLAUSE
+            //bufferApplause = AL.GenBuffer();
+            //sourceApplause = AL.GenSource();
+            //AL.BufferData(bufferApplause, fichierApplause.getFormatSonAL(), fichierApplause.getDonneesSonores(),
+            //    fichierApplause.getQteDonneesSonores(), fichierApplause.getFrequence());
+            //AL.Source(sourceApplause, ALSourcei.Buffer, bufferApplause);
+            //AL.Source(sourceApplause, ALSourceb.Looping, false);
+
+
             //Mettre le bon niveau sonore
             AL.Listener(ALListenerf.Gain, volumeMusique);
         }
@@ -162,6 +197,14 @@ namespace PremierDessin__Heritage_
         {
             AL.SourcePlay(sourceDestructionCaisse);
         }
+        //public void jouerDoritos()
+        //{
+        //    AL.SourcePlay(sourceDoritos);
+        //}
+        //public void jouerApplause()
+        //{
+        //    AL.SourcePlay(sourceApplause);
+        //}
         public void jouerDefaite()
         {
             int bufferDefaite;
@@ -218,6 +261,87 @@ namespace PremierDessin__Heritage_
 
             AL.DeleteSource(sourceGameover);
             AL.DeleteBuffer(bufferGameover);
+        }
+
+        public void jouerWinner()
+        {
+            int bufferWinner;
+            int sourceWinner;
+            FichierWAV fichierWinner = new FichierWAV("./audio/AndTheWinnerIs.wav");
+
+            bufferWinner = AL.GenBuffer();
+            sourceWinner = AL.GenSource();
+            AL.BufferData(bufferWinner, fichierWinner.getFormatSonAL(), fichierWinner.getDonneesSonores(),
+                fichierWinner.getQteDonneesSonores(), fichierWinner.getFrequence());
+            AL.Source(sourceWinner, ALSourcei.Buffer, bufferWinner);
+            AL.Source(sourceWinner, ALSourceb.Looping, false);
+
+            AL.SourcePlay(sourceWinner);
+
+            float volumeMusique;
+            AL.GetSource((uint)sourceMusique, ALSourcef.Gain, out volumeMusique);
+            ALSourceState etatWinner;
+            do
+            {
+                if (volumeMusique > 0.0f)
+                {
+                    volumeMusique -= 0.000001f;
+                    //Ajuster le volume avec la nouvelle valeur
+                    AL.Source(sourceMusique, ALSourcef.Gain, volumeMusique);
+                }
+                etatWinner = AL.GetSourceState(sourceWinner);
+            } while (etatWinner == ALSourceState.Playing);
+
+            AL.DeleteSource(sourceWinner);
+            AL.DeleteBuffer(sourceWinner);
+        }
+        public void jouerDoritos()
+        {
+            int bufferDoritos;
+            int sourceDoritos;
+            FichierWAV fichierDortios = new FichierWAV("./audio/Doritos.wav");
+
+            bufferDoritos = AL.GenBuffer();
+            sourceDoritos = AL.GenSource();
+            AL.BufferData(bufferDoritos, fichierDortios.getFormatSonAL(), fichierDortios.getDonneesSonores(),
+                fichierDortios.getQteDonneesSonores(), fichierDortios.getFrequence());
+            AL.Source(sourceDoritos, ALSourcei.Buffer, bufferDoritos);
+            AL.Source(sourceDoritos, ALSourceb.Looping, false);
+
+            AL.SourcePlay(sourceDoritos);
+
+            ALSourceState etatDoritos;
+            do
+            {
+                etatDoritos = AL.GetSourceState(sourceDoritos);
+            } while (etatDoritos == ALSourceState.Playing);
+
+            AL.DeleteSource(sourceDoritos);
+            AL.DeleteBuffer(sourceDoritos);
+        }
+        public void jouerApplause()
+        {
+            int bufferApplause;
+            int sourceApplause;
+            FichierWAV fichierApplause = new FichierWAV("./audio/Applause.wav");
+
+            bufferApplause = AL.GenBuffer();
+            sourceApplause = AL.GenSource();
+            AL.BufferData(bufferApplause, fichierApplause.getFormatSonAL(), fichierApplause.getDonneesSonores(),
+                fichierApplause.getQteDonneesSonores(), fichierApplause.getFrequence());
+            AL.Source(sourceApplause, ALSourcei.Buffer, bufferApplause);
+            AL.Source(sourceApplause, ALSourceb.Looping, false);
+
+            AL.SourcePlay(sourceApplause);
+
+            ALSourceState etatApplause;
+            do
+            {
+                etatApplause = AL.GetSourceState(sourceApplause);
+            } while (etatApplause == ALSourceState.Playing);
+
+            AL.DeleteSource(sourceApplause);
+            AL.DeleteBuffer(sourceApplause);
         }
 
         public void setVolumeMusique(int nouveauVolume)

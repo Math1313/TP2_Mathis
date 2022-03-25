@@ -148,6 +148,16 @@ namespace BaseOpenTk
                         audio.jouerDefaite();
                     }
                 }
+            } 
+            else if (valPointsDeVie > 0)
+            {
+                if (isWinner && isGameOver && jeuActif)
+                {
+                    jeuActif = false;
+                    audio.jouerWinner();
+                    audio.jouerDoritos();
+                    audio.jouerApplause();
+                }
             }
             if (!isGameOver && !isWinner)
             {
@@ -447,6 +457,7 @@ namespace BaseOpenTk
                             else if (caissesDeBois.Count <= 0 && valPointsDeVie > 0)
                             {
                                 isWinner = true;
+                                isGameOver = true;
                             }
                         }
                     }
@@ -465,28 +476,6 @@ namespace BaseOpenTk
 
                 }
             }
-
-            //Console.WriteLine("*******************");
-            //Console.WriteLine(" Liste des droites ");
-            //Console.WriteLine("*******************");
-            //Console.WriteLine("Triangles: ");
-            //foreach (KeyValuePair<CoteObjets, Vector2[]> droite in listeDroitesTriangle)
-            //{
-            //    Console.Write(droite.Key + " : ");
-            //    Vector2[] listePoints = droite.Value;
-            //    Console.Write(listePoints[0] + " --- ");
-            //    Console.WriteLine(listePoints[1]);
-            //}
-            //Console.WriteLine("");
-
-            //Console.WriteLine("Carré: ");
-            //foreach (KeyValuePair<CoteObjets, Vector2[]> droite in listeDroitesCarre)
-            //{
-            //    Console.Write(droite.Key + " : ");
-            //    Vector2[] listePoints = droite.Value;
-            //    Console.Write(listePoints[0] + " --- ");
-            //    Console.WriteLine(listePoints[1]);
-            //}
         }
         #region MethodesWeb
         private bool intersection(Vector2[] droiteTriangle, Vector2[] droiteCarre)

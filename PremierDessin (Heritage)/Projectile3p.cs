@@ -46,8 +46,11 @@ namespace PremierDessin__Heritage_
         public override void update()
         {
             calculerIncrements();
-            deplacementX += increment_X;
-            deplacementY += increment_Y;
+            for (int i = 0; i < 3; i++)
+            {
+                listePoints[i].X += increment_X;
+                listePoints[i].Y += increment_Y;
+            }
         }
         public void dessiner()
         {
