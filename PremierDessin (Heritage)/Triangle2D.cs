@@ -68,10 +68,25 @@ namespace PremierDessin__Heritage_
         public Vector2[] getPointsSalsa()
         {
             Vector2[] listePointsSalsa = new Vector2[4];
-            listePointsSalsa[0] = new Vector2(listePoints[0].X - 20, listePoints[0].Y - 20);
-            listePointsSalsa[1] = new Vector2(listePoints[0].X + 20, listePoints[0].Y - 20);
-            listePointsSalsa[2] = new Vector2(listePoints[0].X + 20, listePoints[0].Y + 20);
-            listePointsSalsa[3] = new Vector2(listePoints[0].X - 20, listePoints[0].Y + 20);
+            IDictionary<CoteObjets, Vector2[]> droitesCotes = getDroitesCotes();
+
+            Vector2 pointMilieu = droitesCotes[CoteObjets.SUD][0];
+
+            float angleRadian = getAngle(droitesCotes[CoteObjets.SUD][0], droitesCotes[CoteObjets.SUD][1]);
+            Vector2 pointA = getPointFromAngle(angleRadian, pointMilieu, 20.0f);
+
+            angleRadian = getAngle(droitesCotes[CoteObjets.NORD_OUEST][1], droitesCotes[CoteObjets.NORD_OUEST][0]);
+            Vector2 pointB = getPointFromAngle(angleRadian, pointMilieu, 20.0f);
+
+            float angleMilieu = getAngle(pointA, pointB) - (float)((Math.PI / 180) * 90);
+            Vector2 pointC = getPointFromAngle(angleMilieu, pointB, 20.0f);
+            Vector2 pointD = getPointFromAngle(angleMilieu, pointA, 20.0f);
+
+            listePointsSalsa[0] = pointA;
+            listePointsSalsa[1] = pointB;
+            listePointsSalsa[2] = pointC;
+            listePointsSalsa[3] = pointD;
+
 
             return listePointsSalsa;
         }
