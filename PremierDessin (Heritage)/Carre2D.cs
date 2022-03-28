@@ -23,12 +23,12 @@ namespace PremierDessin__Heritage_
             incrementHorizontal = 2.0f;
             valDommage = 20;
         }
-        public Carre2D(int dommage, Vector2 a, Vector2 b, Vector2 c, Vector2 d) : base("./images/CaisseBoisBMP.bmp", a, b, c, d)
+        public Carre2D(int dommage, Vector2 a, Vector2 b, Vector2 c, Vector2 d, float multiplicateurIncrementVertical, float multiplicateurIncrementHorizontal) : base("./images/CaisseBoisBMP.bmp", a, b, c, d)
         {
             deplacementVertical = 0.0f;
             deplacementHorizontal = 0.0f;
-            incrementVertical = 1.5f;
-            incrementHorizontal = 2.0f;
+            incrementVertical = 1.5f * multiplicateurIncrementVertical;
+            incrementHorizontal = 2.0f * multiplicateurIncrementHorizontal;
             valDommage = dommage;
         }
         #endregion
@@ -80,19 +80,17 @@ namespace PremierDessin__Heritage_
             //Les caisses restent coincé entre elle, changer le déplacement dans la classe Carre2D si la valDommage est = 10.
             if (coteCollision == CoteObjets.SUD || coteCollision.ToString() == "NORD")
             {
+                
                 incrementVertical *= -1.0f;
                 deplacementVertical += incrementVertical;
-                if (valDommage == 10)
-                {
-                }
+                
             }
             if (coteCollision.ToString() == "OUEST" || coteCollision.ToString() == "EST")
             {
+                
                 incrementHorizontal *= -1.0f;
                 deplacementHorizontal += incrementHorizontal;
-                if (valDommage == 10)
-                {
-                }
+                
             }
         }
         public void dessiner()
@@ -153,12 +151,10 @@ namespace PremierDessin__Heritage_
 
         }
 
-        public void getDeplacement()
+        public void diviserIncrement()
         {
-            Console.WriteLine("============================================");
-            Console.WriteLine("Deplacement Horizontale: " + deplacementHorizontal);
-            Console.WriteLine("Deplacement Verticale: " + deplacementVertical);
-            Console.WriteLine("============================================");
+            incrementHorizontal /= 1.5f;
+            incrementVertical /= 1.5f;
         }
         #endregion
     }

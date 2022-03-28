@@ -65,6 +65,16 @@ namespace PremierDessin__Heritage_
 
             return listeDroites;
         }
+        public Vector2[] getPointsSalsa()
+        {
+            Vector2[] listePointsSalsa = new Vector2[4];
+            listePointsSalsa[0] = new Vector2(listePoints[0].X - 20, listePoints[0].Y - 20);
+            listePointsSalsa[1] = new Vector2(listePoints[0].X + 20, listePoints[0].Y - 20);
+            listePointsSalsa[2] = new Vector2(listePoints[0].X + 20, listePoints[0].Y + 20);
+            listePointsSalsa[3] = new Vector2(listePoints[0].X - 20, listePoints[0].Y + 20);
+
+            return listePointsSalsa;
+        }
 
         public Vector2[][] getPointsProjectilesMinisDoritos()
         {

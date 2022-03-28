@@ -55,6 +55,7 @@
     <Compile Include="GestionJeu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Projectile3p.cs" />
+    <Compile Include="Projectile4p.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Texte.cs" />
     <Compile Include="Triangle2D.cs" />

@@ -36,6 +36,8 @@ namespace BaseOpenTk
         int valQteSalsa;
         string stringQteSalsa;
         List<Projectile3p> minisDoritos;
+        List<Projectile4p> listeSalsa;
+        bool updateSalsa;
         #endregion //Attributs
 
         #region ConstructeurInitialisateur
@@ -44,6 +46,7 @@ namespace BaseOpenTk
             this.window = window;
             /*------------Bool du Jeu-----------*/
             minisDoritosEnAction = false;
+            updateSalsa = false;
             salsaEnAction = false;
             isDoritosStunned = false;
             isGameOver = false;
@@ -87,6 +90,9 @@ namespace BaseOpenTk
             Vector2 pointG = new Vector2(40.0f, 20.0f);
             caissesDeBois = new List<Carre2D>();
             caissesDeBois.Add(new Carre2D(pointD, pointE, pointF, pointG));
+            /*-------------------------------------------*/
+            /*---------------------Salsa-----------------*/
+            listeSalsa = new List<Projectile4p>();
             /*-------------------------------------------*/
             /*---------------------Audio-----------------*/
             audio = new GestionAudio();
@@ -132,11 +138,6 @@ namespace BaseOpenTk
             KeyboardState etatClavier = Keyboard.GetState();
             if (valPointsDeVie <= 0)
             {
-                //if (valVolumeMusique != 0)
-                //{
-                //    valVolumeMusique -= 1;
-                //    audio.setVolumeMusique(valVolumeMusique);
-                //}
                 isWinner = false;
                 isGameOver = true;
                 if (isGameOver && jeuActif)
@@ -194,6 +195,10 @@ namespace BaseOpenTk
                     miniDoritos.update();
                 }
             }
+            if(updateSalsa && listeSalsa.Count != 0)
+            {
+                listeSalsa[listeSalsa.Count - 1].update();
+            }
         }
         private void rendu(object sender, EventArgs arg)
         {
@@ -212,6 +217,13 @@ namespace BaseOpenTk
                     foreach (Projectile3p miniDoritos in minisDoritos)
                     {
                         miniDoritos.dessiner();
+                    }
+                }
+                if(listeSalsa != null)
+                {
+                    foreach (Projectile4p salsa in listeSalsa)
+                    {
+                        salsa.dessiner();
                     }
                 }
             }
@@ -252,7 +264,6 @@ namespace BaseOpenTk
 
         private void rouletteSouris(object sender, MouseWheelEventArgs arg)
         {
-            //Console.WriteLine("Delta: " + arg.Delta + " / Valeur " + arg.Value);
             valVolumeMusique += arg.Delta;
             if (valVolumeMusique < 0)
             {
@@ -286,6 +297,13 @@ namespace BaseOpenTk
                         valQteMinisDoritos -= 1;
                     }
                 }
+                if (arg.Button == MouseButton.Right && valQteSalsa != 0 && !audio.effetSonoreEstEnTrainDeJouer())
+                {
+                    Vector2[] listePointsSalsa = doritos.getPointsSalsa();
+                    //PROBLEME CREATION DE SALSA AVEC LES POINTS, ANGLES PAS RESPECTÉ
+                    listeSalsa.Add(new Projectile4p("./images/salsa.bmp", listePointsSalsa[0], listePointsSalsa[1], listePointsSalsa[2], listePointsSalsa[3]));
+                    updateSalsa = true;
+                }
             }
         }
 
@@ -299,12 +317,13 @@ namespace BaseOpenTk
                     {
                         audio.jouerSonPleures();
                     }
-                    else
+                    else if(updateSalsa)
                     {
                         audio.jouerSonSplash();
                         valQteSalsa -= 1;
                     }
                 }
+                updateSalsa = false;
             }
         }
         #endregion //GestionDesEntrees
@@ -338,12 +357,14 @@ namespace BaseOpenTk
         private void detectionCollisions()
         {
             IDictionary<CoteObjets, Vector2[]> listeDroitesCarre;
-            //Vérification Doritos VS CaisseBois
+            IDictionary<CoteObjets, Vector2[]> listeDroitesSalsa;
+            /*------------------------Detection Gros doritos-----------------------*/
             IDictionary<CoteObjets, Vector2[]> listeDroitesTriangle = doritos.getDroitesCotes();
             foreach (Carre2D caisse in caissesDeBois)
             {
-                 listeDroitesCarre = caisse.getDroitesCotes();
+                listeDroitesCarre = caisse.getDroitesCotes();
                 bool siCollisionDoritosCaisse = false;
+                bool siCollisionSalsaCaisse = false;
                 CoteObjets coteCollision = CoteObjets.NULL;
 
                 foreach (KeyValuePair<CoteObjets, Vector2[]> droiteTriangle in listeDroitesTriangle)
@@ -364,9 +385,32 @@ namespace BaseOpenTk
                     valPointsDeVie -= caisse.getDommage();
                     caisse.inverserDirection(coteCollision);
                 }
+                /*---------------------------------------------------------------------*/
+                /*------------------------Detection Salsa-----------------------*/
+                List<Projectile4p> listeSalsaCopie = new List<Projectile4p>(listeSalsa);
+                foreach (Projectile4p salsa in listeSalsaCopie)
+                {
+                    listeDroitesSalsa = salsa.getDroitesCotes();
+                    foreach (KeyValuePair<CoteObjets, Vector2[]> droiteSalsa in listeDroitesSalsa)
+                    {
+                        foreach (KeyValuePair<CoteObjets, Vector2[]> droiteCarre in listeDroitesCarre)
+                        {
+                            if (intersection(droiteSalsa.Value, droiteCarre.Value))
+                            {
+                                siCollisionSalsaCaisse = true;
+                                listeSalsa.Remove(salsa);
+                            }
+                        }
+                    }
+                }
+                if(siCollisionSalsaCaisse)
+                {
+                    caisse.diviserIncrement();
+                }
+                /*-------------------------------------------------------------*/
             }
-
-            if(caissesDeBois != null && caissesDeBois.Count > 1)
+            /*------------------------Detection entre caisse-----------------------*/
+            if (caissesDeBois != null && caissesDeBois.Count > 1)
             {
                 List<Carre2D> listeCaisses_ALPHA = new List<Carre2D>(caissesDeBois);
                 List<Carre2D> listeCaisses_BRAVO = new List<Carre2D>(caissesDeBois);
@@ -406,8 +450,9 @@ namespace BaseOpenTk
                     }
                 }
             }
+            /*---------------------------------------------------------------------*/
 
-
+            /*------------------------Detection mini-doritos-----------------------*/
             if (minisDoritos != null && caissesDeBois != null && minisDoritos.Count > 0)
             {
                 List<Projectile3p> listeMinisDoritos = new List<Projectile3p>(minisDoritos);
@@ -444,10 +489,10 @@ namespace BaseOpenTk
                             if (caisse.getDommage() > 10)
                             {
                                 Vector2[][] newPoints = caisse.getPointsPourPetitesCaisses();
-                                Carre2D petiteCaisse_ALPHA = new Carre2D(10, newPoints[0][0], newPoints[0][1], newPoints[0][2], newPoints[0][3]);
-                                Carre2D petiteCaisse_BRAVO = new Carre2D(10, newPoints[1][0], newPoints[1][1], newPoints[1][2], newPoints[1][3]);
-                                Carre2D petiteCaisse_CHARLIE = new Carre2D(10, newPoints[2][0], newPoints[2][1], newPoints[2][2], newPoints[2][3]);
-                                Carre2D petiteCaisse_DELTA = new Carre2D(10, newPoints[3][0], newPoints[3][1], newPoints[3][2], newPoints[3][3]);
+                                Carre2D petiteCaisse_ALPHA = new Carre2D(10, newPoints[0][0], newPoints[0][1], newPoints[0][2], newPoints[0][3], -1.0f, -1.0f);
+                                Carre2D petiteCaisse_BRAVO = new Carre2D(10, newPoints[1][0], newPoints[1][1], newPoints[1][2], newPoints[1][3], 1.0f, -1.0f);
+                                Carre2D petiteCaisse_CHARLIE = new Carre2D(10, newPoints[2][0], newPoints[2][1], newPoints[2][2], newPoints[2][3], 1.0f, 1.0f);
+                                Carre2D petiteCaisse_DELTA = new Carre2D(10, newPoints[3][0], newPoints[3][1], newPoints[3][2], newPoints[3][3], -1.0f, -1.0f);
 
                                 caissesDeBois.Add(petiteCaisse_ALPHA);
                                 caissesDeBois.Add(petiteCaisse_BRAVO);
@@ -462,8 +507,6 @@ namespace BaseOpenTk
                         }
                     }
                 }
-                //Si les projectiles sortent du cadre
-                //Bugguy
                 foreach (Projectile3p miniDoritos in listeMinisDoritos)
                 {
                         if (miniDoritos.getPremierPoint().Y >= 105.0f
@@ -476,6 +519,7 @@ namespace BaseOpenTk
 
                 }
             }
+            /*---------------------------------------------------------------------*/
         }
         #region MethodesWeb
         private bool intersection(Vector2[] droiteTriangle, Vector2[] droiteCarre)
