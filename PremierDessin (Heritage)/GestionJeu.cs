@@ -14,18 +14,25 @@ namespace BaseOpenTk
     {
         #region Attributs
         GameWindow window;
+        /*--------Objet--------*/
         Triangle2D doritos;
         List<Carre2D> caissesDeBois;
+        List<Projectile3p> minisDoritos;
+        List<Projectile4p> listeSalsa;
+        /*---------------------*/
+        /*--------Audio--------*/
         GestionAudio audio;
-        Texte texteVolume;
         int valVolumeMusique;
         string txtVolumeMusique;
-        bool minisDoritosEnAction;
-        bool salsaEnAction;
+        /*---------------------*/
+        /*--------Boolean--------*/
         bool isDoritosStunned;
         bool isGameOver;
         bool isWinner;
         bool jeuActif;
+        bool updateSalsa;
+        /*-----------------------*/
+        /*--------Texte--------*/
         Texte textePointsDeVie;
         int valPointsDeVie;
         string stringPointsDeVie;
@@ -35,9 +42,7 @@ namespace BaseOpenTk
         Texte texteQteSalsa;
         int valQteSalsa;
         string stringQteSalsa;
-        List<Projectile3p> minisDoritos;
-        List<Projectile4p> listeSalsa;
-        bool updateSalsa;
+        /*---------------------*/
         #endregion //Attributs
 
         #region ConstructeurInitialisateur
@@ -45,9 +50,7 @@ namespace BaseOpenTk
         {
             this.window = window;
             /*------------Bool du Jeu-----------*/
-            minisDoritosEnAction = false;
             updateSalsa = false;
-            salsaEnAction = false;
             isDoritosStunned = false;
             isGameOver = false;
             isWinner = false;
@@ -300,7 +303,6 @@ namespace BaseOpenTk
                 if (arg.Button == MouseButton.Right && valQteSalsa != 0 && !audio.effetSonoreEstEnTrainDeJouer())
                 {
                     Vector2[] listePointsSalsa = doritos.getPointsSalsa();
-                    //PROBLEME CREATION DE SALSA AVEC LES POINTS, ANGLES PAS RESPECTÉ
                     listeSalsa.Add(new Projectile4p("./images/salsa.bmp", listePointsSalsa[0], listePointsSalsa[1], listePointsSalsa[2], listePointsSalsa[3]));
                     updateSalsa = true;
                 }

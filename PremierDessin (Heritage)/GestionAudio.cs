@@ -76,8 +76,6 @@ namespace PremierDessin__Heritage_
             fichierSplash = new FichierWAV("./audio/Splash.wav");
             fichierPleures = new FichierWAV("./audio/Pleures.wav");
             fichierDestructionCaisse = new FichierWAV("./audio/DestructionCaisse.wav");
-            //fichierDoritos = new FichierWAV("./audio/Doritos.wav");
-            //fichierApplause = new FichierWAV("./audio/Applause.wav");
             init();
         }
 
@@ -138,23 +136,6 @@ namespace PremierDessin__Heritage_
             AL.Source(sourceDestructionCaisse, ALSourcei.Buffer, bufferDestructionCaisse);
             AL.Source(sourceDestructionCaisse, ALSourceb.Looping, false);
 
-            ////DORITOS
-            //bufferDoritos = AL.GenBuffer();
-            //sourceDoritos = AL.GenSource();
-            //AL.BufferData(bufferDoritos, fichierDoritos.getFormatSonAL(), fichierDoritos.getDonneesSonores(),
-            //    fichierDoritos.getQteDonneesSonores(), fichierDoritos.getFrequence());
-            //AL.Source(sourceDoritos, ALSourcei.Buffer, bufferDoritos);
-            //AL.Source(sourceDoritos, ALSourceb.Looping, false);
-
-            ////APPLAUSE
-            //bufferApplause = AL.GenBuffer();
-            //sourceApplause = AL.GenSource();
-            //AL.BufferData(bufferApplause, fichierApplause.getFormatSonAL(), fichierApplause.getDonneesSonores(),
-            //    fichierApplause.getQteDonneesSonores(), fichierApplause.getFrequence());
-            //AL.Source(sourceApplause, ALSourcei.Buffer, bufferApplause);
-            //AL.Source(sourceApplause, ALSourceb.Looping, false);
-
-
             //Mettre le bon niveau sonore
             AL.Listener(ALListenerf.Gain, volumeMusique);
         }
@@ -197,14 +178,6 @@ namespace PremierDessin__Heritage_
         {
             AL.SourcePlay(sourceDestructionCaisse);
         }
-        //public void jouerDoritos()
-        //{
-        //    AL.SourcePlay(sourceDoritos);
-        //}
-        //public void jouerApplause()
-        //{
-        //    AL.SourcePlay(sourceApplause);
-        //}
         public void jouerDefaite()
         {
             int bufferDefaite;

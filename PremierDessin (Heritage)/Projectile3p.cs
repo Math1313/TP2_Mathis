@@ -62,7 +62,6 @@ namespace PremierDessin__Heritage_
 
         public Vector2 getPremierPoint()
         {
-            //return listePoints[0];
             return new Vector2(listePoints[0].X - deplacementX, listePoints[0].Y - deplacementY);
         }
         public override Dictionary<CoteObjets, Vector2[]> getDroitesCotes()
